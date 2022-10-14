@@ -1,7 +1,12 @@
 import { useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header/Header";
 import SearchBar from "./components/SearchBar/SearchBar";
 import Modal from "./components/Modal/Modal";
+import Home from "./components/Home/Home";
+import Daily from "./components/Daily/Daily";
+import Hourly from "./components/Hourly/Hourly";
+import NotFound from "./components/NotFound/NotFound";
 import "./App.css";
 
 function App() {
@@ -22,19 +27,13 @@ function App() {
       <Modal open={isOpen} close={isClose} passLocation={passUserLoc} />
       <Header />
       <SearchBar userCoordinates={userLoc} />
-      <div className="welcome">
-        <h1>Welcome To Weather App</h1>
-        <p>
-          Use the search box above to search for a city and view it's weather.
-        </p>
-        <p>
-          Click the daily or hourly links to view the location's daily or hourly
-          forecast.
-        </p>
-      </div>
-      <div className="weather-location">
-        <h2>Your current location's weather.</h2>
-      </div>
+      <Routes>
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/daily" element={<Daily />} />
+        <Route path="/hourly" element={<Hourly />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }

@@ -3,7 +3,12 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 import Loader from "../Loader/Loader";
 import "./searchBar.css";
 
-function SearchBar({ userCoordinates }) {
+function SearchBar({
+  userCoordinates,
+  passCurrentWeatherData,
+  passHourlyWeatherData,
+  passDailyWeatherData,
+}) {
   const BASE_URL_LOCATION = "https://us1.locationiq.com/v1";
   const API_TOKEN_LOCATION = "pk.064263178d94fcd2479cae110ac3e880";
 
@@ -14,6 +19,9 @@ function SearchBar({ userCoordinates }) {
   const [lat, setLat] = useState();
   const [lon, setLon] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const [currentWeather, setCurrentWeather] = useState();
+  const [dailyWeather, setDailyWeather] = useState();
+  const [hourlyWeather, setHourlyWeather] = useState();
 
   const searchedCity = [];
   const [cityList, setCityList] = useLocalStorage("cityName", searchedCity);
@@ -77,6 +85,10 @@ function SearchBar({ userCoordinates }) {
         .then((data) => {
           console.log(data);
           setIsLoading(false);
+          setCurrentWeather(data.current);
+          setDailyWeather(data.daily);
+          setHourlyWeather(data.hourly);
+          passData();
         })
         .catch((err) => {
           console.warn(err);
@@ -84,6 +96,12 @@ function SearchBar({ userCoordinates }) {
         });
     }
   }, [lat, lon]);
+
+  function passData() {
+    passCurrentWeatherData(currentWeather);
+    passHourlyWeatherData(hourlyWeather);
+    passDailyWeatherData(dailyWeather);
+  }
 
   function handleClick(ev) {
     ev.preventDefault();
