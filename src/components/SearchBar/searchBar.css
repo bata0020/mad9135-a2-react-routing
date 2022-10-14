@@ -34,8 +34,10 @@ aside {
   display: flex;
   flex-direction: row;
   gap: 0.25rem;
-  justify-content: center;
+  justify-content:end;
+  padding-right: 10rem;
 }
+
 .city-btn {
   border: 0.075rem solid #083359;
   border-radius: 0.25rem;

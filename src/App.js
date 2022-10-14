@@ -7,6 +7,7 @@ import Home from "./components/Home/Home";
 import Daily from "./components/Daily/Daily";
 import Hourly from "./components/Hourly/Hourly";
 import NotFound from "./components/NotFound/NotFound";
+import NavLinks from "./components/NavLinks/NavLinks";
 import "./App.css";
 
 function App() {
@@ -27,12 +28,12 @@ function App() {
       <Modal open={isOpen} close={isClose} passLocation={passUserLoc} />
       <Header />
       <SearchBar userCoordinates={userLoc} />
+      <NavLinks />
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
         <Route path="/daily" element={<Daily />} />
         <Route path="/hourly" element={<Hourly />} />
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
