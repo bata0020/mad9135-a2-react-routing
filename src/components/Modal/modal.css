@@ -1,0 +1,40 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(30, 53, 76, 98%);
+  z-index: 1000;
+}
+
+.box-style {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #E9EFF2;
+  z-index: 1000;
+  border-radius: 0.5rem;
+  padding: 3rem;
+  text-align: center;
+}
+
+.flex-btn {
+  display: flex;
+  gap: 1rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.yesBtn, .noBtn {
+  border: 0.075rem solid #083359;
+  border-radius: 0.25rem;
+  background-color: #083359;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.5rem;
+  width: 3rem;
+}

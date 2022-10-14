@@ -3,7 +3,7 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 import Loader from "../Loader/Loader";
 import "./searchBar.css";
 
-function SearchBar() {
+function SearchBar({ userCoordinates }) {
   const BASE_URL_LOCATION = "https://us1.locationiq.com/v1";
   const API_TOKEN_LOCATION = "pk.064263178d94fcd2479cae110ac3e880";
 
@@ -31,10 +31,18 @@ function SearchBar() {
 
   useEffect(() => {
     if (search) {
-      isLoading(true);
+      setIsLoading(true);
       fetchLocation(search);
     }
   }, [search]);
+
+  useEffect(() => {
+    if (userCoordinates === undefined) return;
+    if (Object.keys(userCoordinates).length) {
+      setLat(userCoordinates.lat);
+      setLon(userCoordinates.lon);
+    }
+  }, [userCoordinates]);
 
   async function fetchLocation(location) {
     await fetch(
