@@ -37,6 +37,7 @@ function SearchBar({ userCoordinates }) {
   }, [search]);
 
   useEffect(() => {
+    setIsLoading(true);
     if (userCoordinates === undefined) return;
     if (Object.keys(userCoordinates).length) {
       setLat(userCoordinates.lat);
@@ -61,33 +62,61 @@ function SearchBar({ userCoordinates }) {
       });
   }
 
+  useEffect(() => {
+    if (lat && lon) {
+      setIsLoading(true);
+      fetch(
+        `${BASE_URL_OPEN_WEATHER}lat=${lat}&lon=${lon}&appid=${API_KEY_OPEN_WEATHER}&exclude=minutely&units=metric`
+      )
+        .then((response) => {
+          if (response.status > 399) {
+            throw new Error(response.statusText);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          console.warn(err);
+          setIsLoading(false);
+        });
+    }
+  }, [lat, lon]);
+
   function handleClick(ev) {
     ev.preventDefault();
     setSearch(ev.target.innerText);
   }
 
-  return (
-    <>
-      <form className="inputForm" onSubmit={handleSubmit}>
-        <input type="text" placeholder="Search A City"></input>
-        <button className="search-btn" type="submit">
-          Search
-        </button>
-      </form>
-      <aside>
-        {cityList.map((item) => (
-          <button
-            className="city-btn"
-            key={item}
-            value={item}
-            onClick={handleClick}
-          >
-            {item}
+  if (isLoading) {
+    return <Loader />;
+  } else {
+    return (
+      <>
+        <form className="inputForm" onSubmit={handleSubmit}>
+          <input type="text" placeholder="Search A City"></input>
+          <button className="search-btn" type="submit">
+            Search
           </button>
-        ))}
-      </aside>
-    </>
-  );
+        </form>
+        <aside>
+          {cityList.map((item) => (
+            <button
+              className="city-btn"
+              key={item}
+              value={item}
+              onClick={handleClick}
+            >
+              {item}
+            </button>
+          ))}
+        </aside>
+        {isLoading && <Loader />}
+      </>
+    );
+  }
 }
 
 export default SearchBar;
