@@ -3,7 +3,6 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header/Header";
 import SearchBar from "./components/SearchBar/SearchBar";
 import Modal from "./components/Modal/Modal";
-import Welcome from "./components/Welcome/Welcome";
 import Home from "./components/Home/Home";
 import Daily from "./components/Daily/Daily";
 import Hourly from "./components/Hourly/Hourly";
@@ -46,12 +45,12 @@ function App() {
 
   function dailyWeather(data) {
     console.log(data);
-    setDaysWeather(data);
+    setDaysWeather(data.slice(1, 7));
   }
 
   function hourlyWeather(data) {
-    console.log(data);
-    setHoursWeather(data);
+    console.log(data.slice(1, 7));
+    setHoursWeather(data.slice(1, 7));
   }
 
   return (

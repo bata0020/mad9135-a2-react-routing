@@ -100,6 +100,7 @@ function SearchBar({
   function handleClick(ev) {
     ev.preventDefault();
     setSearch(ev.target.innerText);
+    searchValue(ev.target.innerText);
   }
 
   if (isLoading) {
