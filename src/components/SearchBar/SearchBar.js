@@ -5,9 +5,11 @@ import "./searchBar.css";
 
 function SearchBar({
   userCoordinates,
-  passCurrentWeatherData,
-  passHourlyWeatherData,
-  passDailyWeatherData,
+  searchValue,
+  locationSearch,
+  currentWeather,
+  dailyWeather,
+  hourlyWeather,
 }) {
   const BASE_URL_LOCATION = "https://us1.locationiq.com/v1";
   const API_TOKEN_LOCATION = "pk.064263178d94fcd2479cae110ac3e880";
@@ -19,9 +21,6 @@ function SearchBar({
   const [lat, setLat] = useState();
   const [lon, setLon] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const [currentWeather, setCurrentWeather] = useState();
-  const [dailyWeather, setDailyWeather] = useState();
-  const [hourlyWeather, setHourlyWeather] = useState();
 
   const searchedCity = [];
   const [cityList, setCityList] = useLocalStorage("cityName", searchedCity);
@@ -29,6 +28,7 @@ function SearchBar({
   function handleSubmit(ev) {
     ev.preventDefault();
     setSearch(ev.target[0].value);
+    searchValue(ev.target[0].value);
     if (cityList.length > 2) {
       cityList.splice(0, 1);
       setCityList(cityList.concat(ev.target[0].value));
@@ -62,6 +62,7 @@ function SearchBar({
         console.log(data[0]);
         setLat(data[0].lat);
         setLon(data[0].lon);
+        locationSearch({ lat, lon });
         setIsLoading(false);
       })
       .catch((err) => {
@@ -84,11 +85,10 @@ function SearchBar({
         })
         .then((data) => {
           console.log(data);
+          currentWeather(data.current);
+          dailyWeather(data.daily);
+          hourlyWeather(data.hourly);
           setIsLoading(false);
-          setCurrentWeather(data.current);
-          setDailyWeather(data.daily);
-          setHourlyWeather(data.hourly);
-          passData();
         })
         .catch((err) => {
           console.warn(err);
@@ -96,12 +96,6 @@ function SearchBar({
         });
     }
   }, [lat, lon]);
-
-  function passData() {
-    passCurrentWeatherData(currentWeather);
-    passHourlyWeatherData(hourlyWeather);
-    passDailyWeatherData(dailyWeather);
-  }
 
   function handleClick(ev) {
     ev.preventDefault();

@@ -4,4 +4,4 @@ function Hourly() {
   return "Hourly";
 }
 
-export default Hourly();
+export default Hourly;

@@ -4,4 +4,4 @@ function Daily() {
   return "Daily";
 }
 
-export default Daily();
+export default Daily;
