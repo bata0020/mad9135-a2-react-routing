@@ -10,6 +10,7 @@ function SearchBar({
   currentWeather,
   dailyWeather,
   hourlyWeather,
+  timezoneOffset,
 }) {
   const BASE_URL_LOCATION = "https://us1.locationiq.com/v1";
   const API_TOKEN_LOCATION = "pk.064263178d94fcd2479cae110ac3e880";
@@ -85,9 +86,11 @@ function SearchBar({
         })
         .then((data) => {
           console.log(data);
+          let offset = data.timezone_offset;
           currentWeather(data.current);
           dailyWeather(data.daily);
           hourlyWeather(data.hourly);
+          timezoneOffset(offset);
           setIsLoading(false);
         })
         .catch((err) => {

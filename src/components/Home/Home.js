@@ -6,6 +6,7 @@ function Home({
   searchCity,
   locationWeather,
   searchedLocation,
+  timeOffset,
 }) {
   // console.log(userCoordinates);
   // console.log("City Searched: ", searchCity);
@@ -16,6 +17,7 @@ function Home({
       value * 1000
     ).getMinutes()}`;
   }
+
   if (searchedLocation === undefined && locationWeather === undefined) {
     return (
       <>

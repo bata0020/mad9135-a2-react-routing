@@ -18,6 +18,7 @@ function App() {
   const [hoursWeather, setHoursWeather] = useState();
   const [searchCity, setSearchCity] = useState();
   const [searchedLocation, setSearchedLocation] = useState();
+  const [timeOffset, setTimeOffset] = useState();
 
   function isClose() {
     setIsOpen(false);
@@ -53,6 +54,10 @@ function App() {
     setHoursWeather(data.slice(1, 7));
   }
 
+  function timezoneOffset(data) {
+    setTimeOffset(data);
+  }
+
   return (
     <div className="App">
       <Modal open={isOpen} close={isClose} passLocation={passUserLoc} />
@@ -64,6 +69,7 @@ function App() {
         currentWeather={currentWeatherData}
         dailyWeather={dailyWeather}
         hourlyWeather={hourlyWeather}
+        timezoneOffset={timezoneOffset}
       />
       <NavLinks />
       <Routes>
@@ -76,6 +82,7 @@ function App() {
               searchedLocation={searchedLocation}
               locationWeather={locationWeather}
               searchCity={searchCity}
+              timeOffset={timeOffset}
             />
           }
         />
