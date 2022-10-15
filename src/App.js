@@ -11,6 +11,7 @@ import NavLinks from "./components/NavLinks/NavLinks";
 import "./App.css";
 
 function App() {
+  document.title = "React Weather App";
   const [isOpen, setIsOpen] = useState(true);
   const [userLoc, setUserLoc] = useState();
   const [locationWeather, setLocationWeather] = useState();
@@ -73,7 +74,7 @@ function App() {
       />
       <NavLinks />
       <Routes>
-        <Route path="/" element={<Navigate to="/default" />} />
+        <Route path="/" element={<Navigate to="/home" />} />
         <Route
           path="/home"
           element={
