@@ -1,16 +1,20 @@
 import React from "react";
 import HourlyList from "../HourlyList/HourlyList";
+import "./hourly.css";
 
-function Hourly({ hoursWeather }) {
+function Hourly({ hoursWeather, searchCity }) {
   if (!hoursWeather) {
     return;
   } else {
     return (
-      <ul className="hourlyCard">
-        {hoursWeather.map((hourly) => (
-          <HourlyList key={hourly.dt} data={hourly} />
-        ))}
-      </ul>
+      <>
+        <h1>{searchCity} Hourly Weather</h1>
+        <ul className="hourlyCard">
+          {hoursWeather.map((hourly) => (
+            <HourlyList key={hourly.dt} data={hourly} />
+          ))}
+        </ul>
+      </>
     );
   }
 }

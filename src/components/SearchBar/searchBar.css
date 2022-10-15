@@ -34,7 +34,7 @@ aside {
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
-  justify-content:end;
+  justify-content: flex-end;
   padding-right: 5rem;
 }
 

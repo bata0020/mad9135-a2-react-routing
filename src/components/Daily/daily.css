@@ -1,0 +1,14 @@
+ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dailyCard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 40em;
+  margin: 0 auto;
+}

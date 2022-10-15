@@ -1,34 +1,18 @@
-h2{
-  padding-top: 1.5rem;
-}
-
-.grid {
+.card {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
   border: 0.1rem solid #224459;
   background-color: #C2E0F2;
-  box-shadow: 0 0 0.25rem #224459;
   border-radius: 0.5rem;
-  width: 100%;
-  max-width: 32em;
-  margin: 0 auto;
+  box-shadow: 0 0 0.25rem #224459;
+  align-items: center;
 }
 
-.info {
+.card-info {
   display: grid;
   border-right: 0.05rem solid #224459;
   align-items: center;
   justify-content: center;
   text-align: center;
   gap: 0.5rem;
-}
-
-.icon {
-  height: 16vh;
-}
-
-.temp {
-  font-size: 2rem;
-  margin: 0;
 }

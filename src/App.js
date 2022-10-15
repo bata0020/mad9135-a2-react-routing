@@ -79,10 +79,15 @@ function App() {
             />
           }
         />
-        <Route path="/daily" element={<Daily daysWeather={daysWeather} />} />
+        <Route
+          path="/daily"
+          element={<Daily daysWeather={daysWeather} searchCity={searchCity} />}
+        />
         <Route
           path="/hourly"
-          element={<Hourly hoursWeather={hoursWeather} />}
+          element={
+            <Hourly hoursWeather={hoursWeather} searchCity={searchCity} />
+          }
         />
         <Route path="*" element={<NotFound />} />
       </Routes>

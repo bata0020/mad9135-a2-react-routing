@@ -53,7 +53,7 @@ function Home({
               <div className="info-image">
                 <img
                   src={`http://openweathermap.org/img/wn/${locationWeather.weather[0].icon}@2x.png`}
-                  alt="weather image"
+                  alt="weather icon"
                   className="icon"
                 ></img>
               </div>
@@ -63,9 +63,9 @@ function Home({
               </div>
             </div>
             <div className="other-info">
-              <p>{Math.round(locationWeather.feels_like)} °C</p>
-              <p>{getTime(locationWeather.sunrise)}</p>
-              <p>{getTime(locationWeather.sunset)}</p>
+              <p>Feels: {Math.round(locationWeather.feels_like)} °C</p>
+              <p>Sunrise: {getTime(locationWeather.sunrise)}</p>
+              <p>Sunset: {getTime(locationWeather.sunset)}</p>
             </div>
           </div>
         </div>
@@ -80,7 +80,7 @@ function Home({
             <div className="info-image">
               <img
                 src={`http://openweathermap.org/img/wn/${locationWeather.weather[0].icon}@2x.png`}
-                alt="weather image"
+                alt="weather icon"
                 className="icon"
               ></img>
             </div>
@@ -90,9 +90,9 @@ function Home({
             </div>
           </div>
           <div className="other-info">
-            <p>{Math.round(locationWeather.feels_like)} °C</p>
-            <p>{getTime(locationWeather.sunrise)}</p>
-            <p>{getTime(locationWeather.sunset)}</p>
+            <p>Feels: {Math.round(locationWeather.feels_like)} °C</p>
+            <p>Sunrise: {getTime(locationWeather.sunrise)}</p>
+            <p>Sunset: {getTime(locationWeather.sunset)}</p>
           </div>
         </div>
       </>

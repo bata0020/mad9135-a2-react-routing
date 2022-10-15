@@ -1,4 +1,5 @@
 import React from "react";
+import "./hourlyList.css";
 
 function HourlyList({ data }) {
   let time = getTime(data.dt);
@@ -13,11 +14,18 @@ function HourlyList({ data }) {
 
   return (
     <li className="card">
-      <img src={`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`}></img>
-      <p>Time: {time}</p>
-      <p>Description: {desc}</p>
-      <p>Temp: {Math.round(temp)} °C</p>
-      <p>Real Feel: {Math.round(feels)} °C</p>
+      <div className="card-info">
+        <img
+          src={`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`}
+          alt="weather icon"
+        ></img>
+        <p className="temp">{Math.round(temp)} °C</p>
+        <p>{desc}</p>
+      </div>
+      <div className="card-other">
+        <p>Time: {time}</p>
+        <p>Real Feel: {Math.round(feels)} °C</p>
+      </div>
     </li>
   );
 }
