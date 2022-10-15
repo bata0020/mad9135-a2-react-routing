@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/mad9135-a2-react-routing/static/css/main.bcca881d.css",
+    "main.js": "/mad9135-a2-react-routing/static/js/main.81e53eb0.js",
+    "static/js/787.f8e7dff8.chunk.js": "/mad9135-a2-react-routing/static/js/787.f8e7dff8.chunk.js",
+    "static/media/logo.svg": "/mad9135-a2-react-routing/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/mad9135-a2-react-routing/index.html",
+    "main.bcca881d.css.map": "/mad9135-a2-react-routing/static/css/main.bcca881d.css.map",
+    "main.81e53eb0.js.map": "/mad9135-a2-react-routing/static/js/main.81e53eb0.js.map",
+    "787.f8e7dff8.chunk.js.map": "/mad9135-a2-react-routing/static/js/787.f8e7dff8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bcca881d.css",
+    "static/js/main.81e53eb0.js"
+  ]
+}
